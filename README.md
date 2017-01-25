@@ -8,4 +8,4 @@ Authors are: Arneld van der Veen, Martijn Bakker, Albert van der Berg, Antonie G
 Hanzehogeschool Groningen
 2017
 
-Test voor antonie
+Albert is een dikke lul
