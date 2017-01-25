@@ -1,5 +1,8 @@
 public class Location {
-
+/*
+ * @author Arneld van der Veen, Albert van der Berg, Martijn Bakker, 
+ * Daniel Bouius, Antonie Groenveld
+ */
     private int floor;
     private int row;
     private int place;

@@ -1,3 +1,7 @@
+/*
+ * Dit is de klasse die de automobilisten met een parkingpass aanmaakt.
+ * @author Daniël Bouius, Arneld van der Veen, Albert van der Berg, Antonie Groenveld, Martijn Bakker
+ */
 import java.util.Random;
 import java.awt.*;
 
