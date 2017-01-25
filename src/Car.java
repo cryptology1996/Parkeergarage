@@ -1,4 +1,8 @@
 import java.awt.*;
+/*
+ * @author Arneld van der Veen, Antonie Groenveld, Albert van der Berg, 
+ * Martijn Bakker, Daniel Bouius 
+ */
 
 public abstract class Car {
 
