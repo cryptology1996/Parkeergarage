@@ -4,6 +4,7 @@ public class Simulator {
 
 	private static final String AD_HOC = "1";
 	private static final String PASS = "2";
+	private static final String SUB = "3";
 	
 	
 	private CarQueue entranceCarQueue;
@@ -94,6 +95,8 @@ public class Simulator {
         addArrivingCars(numberOfCars, AD_HOC);    	
     	numberOfCars=getNumberOfCars(weekDayPassArrivals, weekendPassArrivals);
         addArrivingCars(numberOfCars, PASS);    	
+        numberOfCars=getNumberOfCars(weekDayPassArrivals, weekendPassArrivals);
+        addArrivingCars(numberOfCars, SUB);  
     }
 
     private void carsEntering(CarQueue queue){
@@ -170,7 +173,12 @@ public class Simulator {
             for (int i = 0; i < numberOfCars; i++) {
             	entrancePassQueue.addCar(new ParkingPassCar());
             }
-            break;	            
+    	    break;
+    	case SUB:
+    		for (int i = 0; i < numberOfCars; i++) {
+    			entrancePassQueue.addCar(new SubscriberPassCar());
+    		}
+    		break;
     	}
     }
     
