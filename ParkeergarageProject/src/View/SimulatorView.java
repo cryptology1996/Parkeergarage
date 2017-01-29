@@ -3,6 +3,7 @@ import javax.swing.*;
 import java.awt.*;
 
 import Model.*;
+import Controller.*;
 
 
 public class SimulatorView extends JFrame {
@@ -12,6 +13,9 @@ public class SimulatorView extends JFrame {
     private int numberOfPlaces;
     private int numberOfOpenSpots;
     private Car[][][] cars;
+    private Controller controller;
+    private Simulator model;
+  
 
     public SimulatorView(int numberOfFloors, int numberOfRows, int numberOfPlaces) {
         this.numberOfFloors = numberOfFloors;
@@ -19,11 +23,14 @@ public class SimulatorView extends JFrame {
         this.numberOfPlaces = numberOfPlaces;
         this.numberOfOpenSpots =numberOfFloors*numberOfRows*numberOfPlaces;
         cars = new Car[numberOfFloors][numberOfRows][numberOfPlaces];
-        
+        controller= new Controller(model);
         carParkView = new CarParkView();
-
+        
+       
         Container contentPane = getContentPane();
-        contentPane.add(carParkView, BorderLayout.CENTER);
+        contentPane.add(carParkView,BorderLayout.CENTER);
+        contentPane.add(controller, BorderLayout.WEST);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
         setVisible(true);
 
@@ -154,7 +161,7 @@ public class SimulatorView extends JFrame {
          * Overridden. Tell the GUI manager how big we would like to be.
          */
         public Dimension getPreferredSize() {
-            return new Dimension(1920, 1080);
+            return new Dimension(1000, 500);
         }
     
         /**
