@@ -13,7 +13,7 @@ public class SimulatorView extends JFrame {
     private int numberOfOpenSpots;
     private Car[][][] cars;
     private Controller controller;
-    private Simulator model;
+    private Simulator simulator;
     private TextOverview textOverview;
   
 
@@ -23,7 +23,7 @@ public class SimulatorView extends JFrame {
         this.numberOfPlaces = numberOfPlaces;
         this.numberOfOpenSpots =numberOfFloors*numberOfRows*numberOfPlaces;
         cars = new Car[numberOfFloors][numberOfRows][numberOfPlaces];
-        controller= new Controller(model);
+        controller= new Controller(simulator);
         carParkView = new CarParkView();
         textOverview = tOView;
         

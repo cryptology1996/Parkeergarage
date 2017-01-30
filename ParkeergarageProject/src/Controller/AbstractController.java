@@ -4,9 +4,9 @@ import javax.swing.*;
 import Model.*;
 
 public abstract class AbstractController extends JPanel {
-	protected Simulator model;
+	protected Simulator simulator;
 	
-	public AbstractController(Simulator model) {
-		this.model=model;
+	public AbstractController(Simulator simulator) {
+		this.simulator=simulator;
 	}
 }

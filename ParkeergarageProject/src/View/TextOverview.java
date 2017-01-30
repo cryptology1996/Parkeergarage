@@ -12,7 +12,7 @@ import javax.swing.JTextField;
 
 public class TextOverview extends JPanel {
 	private JTextField txtRevenue;
-	private Simulator model;
+	private Simulator simulator;
 	double ticketPrice = 7.50;
 	
 	
@@ -20,8 +20,8 @@ public class TextOverview extends JPanel {
 	/**
 	 * Create the frame.
 	 */
-	public TextOverview(Simulator model) {
-		this.model = model;
+	public TextOverview(Simulator simulator) {
+		this.simulator = simulator;
 		this.setLayout(new GridLayout(0,1)); 
 		//setBounds(100, 100, 450, 339);
 		
@@ -62,7 +62,7 @@ public class TextOverview extends JPanel {
 	public void calcRevenue()
 	{
 	
-	int totalCars = model.getPayingCars();	
+	int totalCars = simulator.getPayingCars();	
 	double totalRevenue = totalCars * ticketPrice;
 			
 		txtRevenue.setText(" "+totalRevenue+"$");	

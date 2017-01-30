@@ -11,29 +11,29 @@ public class Simulator extends AbstractModel {
 	private static final String SUB = "3";
 	
 	
-	private CarQueue entranceCarQueue;
-    private CarQueue entrancePassQueue;
-    private CarQueue paymentCarQueue;
-    private CarQueue exitCarQueue;
-    private SimulatorView simulatorView;
-    private int PayingCars;
-    private TextOverview textOverview;
+	private static CarQueue entranceCarQueue;
+    private static CarQueue entrancePassQueue;
+    private static CarQueue paymentCarQueue;
+    private static CarQueue exitCarQueue;
+    private static SimulatorView simulatorView;
+    private static int PayingCars;
+    private static TextOverview textOverview;
     private Controller controller;
 
-    private int day = 0;
-    private int hour = 0;
-    private int minute = 0;
+    private static int day = 0;
+    private static int hour = 0;
+    private static int minute = 0;
 
-    private int tickPause = 100;
+    private static int tickPause = 100;
 
-    int weekDayArrivals= 100; // average number of arriving cars per hour
-    int weekendArrivals = 200; // average number of arriving cars per hour
-    int weekDayPassArrivals= 50; // average number of arriving cars per hour
-    int weekendPassArrivals = 5; // average number of arriving cars per hour
+    static int weekDayArrivals= 100; // average number of arriving cars per hour
+    static int weekendArrivals = 200; // average number of arriving cars per hour
+    static int weekDayPassArrivals= 50; // average number of arriving cars per hour
+    static int weekendPassArrivals = 5; // average number of arriving cars per hour
 
-    int enterSpeed = 3; // number of cars that can enter per minute
-    int paymentSpeed = 7; // number of cars that can pay per minute
-    int exitSpeed = 5; // number of cars that can leave per minute
+    static int enterSpeed = 3; // number of cars that can enter per minute
+    static int paymentSpeed = 7; // number of cars that can pay per minute
+    static int exitSpeed = 5; // number of cars that can leave per minute
     
 
     public Simulator() {
@@ -46,14 +46,14 @@ public class Simulator extends AbstractModel {
         simulatorView = new SimulatorView(3, 6, 30, textOverview);
     }
     
-    public void runCommand(int getal) {
+    public static void runCommand(int getal) {
     	int i = getal;
     	while(i > 0){
     		tick();
     		i--; }
     	}
     
-    public void tick() {
+    public static void tick() {
     	advanceTime();
     	handleExit();
     	updateViews();
@@ -66,7 +66,7 @@ public class Simulator extends AbstractModel {
     	handleEntrance();
     }
 
-    private void advanceTime(){
+    private static void advanceTime(){
         // Advance the time by one minute.
         minute++;
         while (minute > 59) {
@@ -83,25 +83,25 @@ public class Simulator extends AbstractModel {
 
     }
 
-    private void handleEntrance(){
+    private static void handleEntrance(){
     	carsArriving();
     	carsEntering(entrancePassQueue);
     	carsEntering(entranceCarQueue);  	
     }
     
-    private void handleExit(){
+    private static void handleExit(){
         carsReadyToLeave();
         carsPaying();
         carsLeaving();
     }
     
-    private void updateViews(){
+    private static void updateViews(){
     	simulatorView.tick();
         // Update the car park view.
         simulatorView.updateView();	
     }
     
-    private void carsArriving(){
+    private static void carsArriving(){
     	int numberOfCars=getNumberOfCars(weekDayArrivals, weekendArrivals);
         addArrivingCars(numberOfCars, AD_HOC);    	
     	numberOfCars=getNumberOfCars(weekDayPassArrivals, weekendPassArrivals);
@@ -110,7 +110,7 @@ public class Simulator extends AbstractModel {
         addArrivingCars(numberOfCars, SUB);  
     }
 
-    private void carsEntering(CarQueue queue){
+    private static void carsEntering(CarQueue queue){
         int i=0;
         // Remove car from the front of the queue and assign to a parking space.
     	while (queue.carsInQueue()>0 && 
@@ -123,7 +123,7 @@ public class Simulator extends AbstractModel {
         }
     }
     
-    private void carsReadyToLeave(){
+    private static void carsReadyToLeave(){
         // Add leaving cars to the payment queue.
         Car car = simulatorView.getFirstLeavingCar();
         while (car!=null) {
@@ -138,7 +138,7 @@ public class Simulator extends AbstractModel {
         }
     }
 
-    private void carsPaying(){
+    private static void carsPaying(){
         // Let cars pay.
     	for (int i = 0; i < paymentSpeed; i++) {
             Car car = paymentCarQueue.removeCar();
@@ -156,7 +156,7 @@ public class Simulator extends AbstractModel {
     	}
     }
     
-    private void carsLeaving(){
+    private static void carsLeaving(){
         // Let cars leave.
     	int i=0;
     	while (exitCarQueue.carsInQueue()>0 && i < exitSpeed){
@@ -165,7 +165,7 @@ public class Simulator extends AbstractModel {
     	}	
     }
     
-    private int getNumberOfCars(int weekDay, int weekend){
+    private static int getNumberOfCars(int weekDay, int weekend){
         Random random = new Random();
 
         // Get the average number of cars that arrive per hour.
@@ -186,7 +186,7 @@ public class Simulator extends AbstractModel {
     	return PayingCars;
     }
     
-    private void addArrivingCars(int numberOfCars, String type){
+    private static void addArrivingCars(int numberOfCars, String type){
         // Add the cars to the back of the queue.
     	switch(type) {
     	case AD_HOC: 
@@ -207,7 +207,7 @@ public class Simulator extends AbstractModel {
     	}
     }
     
-    private void carLeavesSpot(Car car){
+    private static void carLeavesSpot(Car car){
     	simulatorView.removeCarAt(car.getLocation());
         exitCarQueue.addCar(car);
     }

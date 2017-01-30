@@ -5,22 +5,22 @@ import Model.*;
 import Controller.*;
 
 public abstract class AbstractView extends JFrame {
-	protected Simulator model;
+	protected Simulator simulator;
 
-	public AbstractView(Simulator model) {
-		this.model=model;
-		model.addView(this);
+	public AbstractView(Simulator simulator) {
+		this.simulator=simulator;
+		simulator.addView(this);
 	}
 	
 	public Simulator getModel() {
-		return model;
+		return simulator;
 	}
 	
 	public void updateView() {
 		repaint();
 	}
 private void updateViews(){
-	model.tick();
+	simulator.tick();
     // Update the car park view.
     updateView();	
 }
