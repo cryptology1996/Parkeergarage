@@ -2,6 +2,9 @@ package Controller;
 
 import javax.swing.*;
 import java.awt.Color;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.event.*;
 import java.io.IOException;
 
@@ -30,29 +33,50 @@ public class Controller extends AbstractController implements ActionListener {
 	
 public Controller(Simulator simulator) {
 		super(simulator);
-
+		
+		setLayout(new GridBagLayout());
     	setBackground(Color.LIGHT_GRAY);
     	setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY,8));
     	
     	een = new JButton("One Step");
     	een.addActionListener((ActionListener) this);
+    	GridBagConstraints l1 = new GridBagConstraints();
+		l1.fill = GridBagConstraints.HORIZONTAL;
+        l1.weightx = 1;
+        l1.gridx = 0;
+        l1.gridy = 0;
         een.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
-        add(een);
-         
-        honderd= new JButton("Hundred Step");
+        add(een, l1);
+        
+        honderd= new JButton("Hunderd Step");
         honderd.addActionListener((ActionListener) this);
+        GridBagConstraints l2 = new GridBagConstraints();
+		l2.fill = GridBagConstraints.HORIZONTAL;
+        l2.weightx = 1;
+        l2.gridx = 1;
+        l2.gridy = 0;
         honderd.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
-        add(honderd);
+        add(honderd, l2);
        
         start= new JButton("Start");
         start.addActionListener((ActionListener) this);
-        honderd.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
-        add(start);
+        GridBagConstraints l3 = new GridBagConstraints();
+		l3.fill = GridBagConstraints.HORIZONTAL;
+        l3.weightx = 1;
+        l3.gridx = 2;
+        l3.gridy = 0;
+        start.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+        add(start, l3);
        
         stop= new JButton("Reset");
         stop.addActionListener((ActionListener) this);
-        honderd.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
-        add(stop);
+        GridBagConstraints l4 = new GridBagConstraints();
+		l4.fill = GridBagConstraints.HORIZONTAL;
+        l4.weightx = 1;
+        l4.gridx = 3;
+        l4.gridy = 0;
+        stop.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+        add(stop, l4);
         
         setVisible(true);
 		
@@ -95,7 +119,7 @@ public void actionPerformed(ActionEvent e)
 			if (command == "One Step"){
 				Simulator.runCommand(1);
 			} 
-			if (command == "Hundred Step"){
+			if (command == "Hunderd Step"){
 				Simulator.runCommand(100);
 				}
 			if (command == "Start"){
