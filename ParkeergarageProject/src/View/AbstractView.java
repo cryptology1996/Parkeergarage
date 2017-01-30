@@ -11,7 +11,7 @@ import Model.*;
  */
 
 public abstract class AbstractView extends JFrame {
-	protected Simulator simulator;
+	protected static Simulator simulator;
 
 	public AbstractView(Simulator simulator) {
 		this.simulator=simulator;
