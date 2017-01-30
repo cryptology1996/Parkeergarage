@@ -14,10 +14,10 @@ public class Simulator extends AbstractModel {
     private CarQueue paymentCarQueue;
     private CarQueue exitCarQueue;
     private SimulatorView simulatorView;
-	 private int PayingCars;
-private TextOverview textOverview;
+    private int PayingCars;
+    private TextOverview textOverview;
 
-	private int day = 0;
+    private int day = 0;
     private int hour = 0;
     private int minute = 0;
 
@@ -31,12 +31,15 @@ private TextOverview textOverview;
     int enterSpeed = 3; // number of cars that can enter per minute
     int paymentSpeed = 7; // number of cars that can pay per minute
     int exitSpeed = 5; // number of cars that can leave per minute
+    
 
     public Simulator() {
         entranceCarQueue = new CarQueue();
         entrancePassQueue = new CarQueue();
         paymentCarQueue = new CarQueue();
         exitCarQueue = new CarQueue();
+        textOverview = new TextOverview(this);
+        //test
         simulatorView = new SimulatorView(3, 6, 30, textOverview);
     }
     public void tick() {
@@ -126,7 +129,7 @@ private TextOverview textOverview;
 
     private void carsPaying(){
         // Let cars pay.
-    		for (int i = 0; i < paymentSpeed; i++) {
+    	for (int i = 0; i < paymentSpeed; i++) {
             Car car = paymentCarQueue.removeCar();
             if (car != null){
             	PayingCars++;
@@ -138,6 +141,7 @@ private TextOverview textOverview;
             simulatorView.removeCarAt(car.getLocation());
             exitCarQueue.addCar(car);
             textOverview.updateView();
+    	
     	}
     }
     
@@ -163,7 +167,7 @@ private TextOverview textOverview;
         double numberOfCarsPerHour = averageNumberOfCarsPerHour + random.nextGaussian() * standardDeviation;
         return (int)Math.round(numberOfCarsPerHour / 60);	
     }
-	/*
+    /*
      * returns the amount of cars that will pay 
      * @return PayingCars
      */
@@ -196,4 +200,5 @@ private TextOverview textOverview;
     	simulatorView.removeCarAt(car.getLocation());
         exitCarQueue.addCar(car);
     }
+    
 }
