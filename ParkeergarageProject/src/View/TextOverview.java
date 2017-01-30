@@ -24,7 +24,7 @@ public class TextOverview extends JPanel {
 	
 	
 	/**
-	 * Create the frame
+	 * Constructor for TextOverview
 	 */
 	
 	public TextOverview(Simulator simulator) {

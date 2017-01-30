@@ -11,6 +11,10 @@ import java.awt.*;
 public class SubscriberPassCar extends Car {
 	private static final Color COLOR=Color.black;
 	
+	/**
+	 * Constructor for SubscriberPassCar
+	 */
+	
     public SubscriberPassCar() {
     	Random random = new Random();
     	int stayMinutes = (int) (15 + random.nextFloat() * 3 * 60);
