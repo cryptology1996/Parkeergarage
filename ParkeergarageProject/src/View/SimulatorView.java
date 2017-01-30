@@ -1,7 +1,6 @@
 package View;
 import javax.swing.*;
 import java.awt.*;
-
 import Model.*;
 import Controller.*;
 
@@ -15,9 +14,10 @@ public class SimulatorView extends JFrame {
     private Car[][][] cars;
     private Controller controller;
     private Simulator model;
+    private TextOverview textOverview;
   
 
-    public SimulatorView(int numberOfFloors, int numberOfRows, int numberOfPlaces) {
+    public SimulatorView(int numberOfFloors, int numberOfRows, int numberOfPlaces, TextOverview tOView) {
         this.numberOfFloors = numberOfFloors;
         this.numberOfRows = numberOfRows;
         this.numberOfPlaces = numberOfPlaces;
@@ -25,12 +25,14 @@ public class SimulatorView extends JFrame {
         cars = new Car[numberOfFloors][numberOfRows][numberOfPlaces];
         controller= new Controller(model);
         carParkView = new CarParkView();
+        textOverview = tOView;
         
        
         Container contentPane = getContentPane();
         contentPane.setLayout(new GridLayout(2, 1));
         contentPane.add(carParkView);
         contentPane.add(controller);
+        contentPane.add(tOView);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
         setVisible(true);
