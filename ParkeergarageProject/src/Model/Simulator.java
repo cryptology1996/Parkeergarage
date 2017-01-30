@@ -5,6 +5,12 @@ import java.util.Random;
 import Controller.Controller;
 import View.*;
 
+/**
+ * Class for the "Main" model of Simulator
+ * @author Martijn Bakker, Albert van der Berg, Antonie Groenveld, Arneld van der Veen and Daniel Bouius
+ *
+ */
+
 public class Simulator extends AbstractModel {
 	private static final String AD_HOC = "1";
 	private static final String PASS = "2";
@@ -36,7 +42,12 @@ public class Simulator extends AbstractModel {
     static int paymentSpeed = 7; // number of cars that can pay per minute
     static int exitSpeed = 5; // number of cars that can leave per minute
     
-
+    /**
+	 * Constructs a new instance of the Simulator
+	 * Creates a new entranceCarQueue, entrancePassQueue, paymentCarQueue, exitCarQueue
+	 * and textOverview
+	 */
+    
     public Simulator() {
         entranceCarQueue = new CarQueue();
         entrancePassQueue = new CarQueue();
@@ -51,12 +62,22 @@ public class Simulator extends AbstractModel {
     	run = false;
     }
     
+    /**
+	 * Runs the simulation for the given amount of ticks
+	 * @param getal = runCommand
+	 */
+    
     public static void runCommand(int getal) {
     	int i = getal;
     	while(i > 0 && run == true){
     		tick();
     		i--; }
     	}
+    
+    /**
+	 * Forwards the simulation by advanceTime();, cars exit by handleExit(); 
+	 * and updatesview with updateViews();
+	 */
     
     public static void tick() {
     	advanceTime();

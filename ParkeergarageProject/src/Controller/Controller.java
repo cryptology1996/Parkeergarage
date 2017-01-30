@@ -1,16 +1,19 @@
 package Controller;
 
-
-import Controller.AbstractController;
-import Main.Main;
-import Model.Simulator;
-
 import javax.swing.*;
-
 import java.awt.Color;
-
 import java.awt.event.*;
 import java.io.IOException;
+
+import Model.Simulator;
+import Controller.AbstractController;
+
+/**
+ * This is class Controller for Simulator 
+ * Contains the buttons for the simulator with its ActionListener and ActionEvent
+ * @author Martijn Bakker, Albert van der Berg, Antonie Groenveld, Arneld van der Veen and Daniel Bouius
+ *
+ */
 
 public class Controller extends AbstractController implements ActionListener {
 	private JButton een;
@@ -19,7 +22,12 @@ public class Controller extends AbstractController implements ActionListener {
 	private JButton stop;
 	private ActionEvent event;
 	private Simulator simulator;
-
+	
+/**
+* Constructs an instance of the Controller
+* and add the buttons 1 step, 100 steps, start an stop to simulator 
+*/
+	
 public Controller(Simulator simulator) {
 		super(simulator);
 
@@ -55,6 +63,7 @@ public Controller(Simulator simulator) {
  * @ActionEvent = e
  * @event = e
  */
+
 public void setActionEvent(ActionEvent e) {
 	event = e;
 }
@@ -63,6 +72,7 @@ public void setActionEvent(ActionEvent e) {
  * returns the set event
  * @return event
  */
+
 public ActionEvent getActionEvent() {
 	return event;
 }
@@ -70,9 +80,11 @@ public ActionEvent getActionEvent() {
 /**
  * Executes the the input action
  */
+
 public void actionPerformed(ActionEvent e)
 {
-	// sets the received actionEvent, and creates a new thread.
+	
+	// sets the received actionEvent, and creates a new thread
 	setActionEvent(e);
 	Thread performerThread = new Thread(){
 		
@@ -93,7 +105,7 @@ public void actionPerformed(ActionEvent e)
 				try {
 					Runtime.getRuntime().exec("java -jar Parkeergarage.jar");
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
+					
 					e1.printStackTrace();
 				}
 			     System.exit(1);

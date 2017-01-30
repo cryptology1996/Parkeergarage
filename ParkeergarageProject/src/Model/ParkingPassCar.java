@@ -1,13 +1,21 @@
 package Model;
-/*
- * Dit is de klasse die de automobilisten met een parkingpass aanmaakt.
- * @author Daniël Bouius, Arneld van der Veen, Albert van der Berg, Antonie Groenveld, Martijn Bakker
- */
+
+
 import java.util.Random;
 import java.awt.*;
 
+/*
+ * This is class ParkingPassCar
+ * This is the class which makes parkingpasses for car
+ * @author Daniël Bouius, Arneld van der Veen, Albert van der Berg, Antonie Groenveld, Martijn Bakker
+ */
+
 public class ParkingPassCar extends Car {
 	private static final Color COLOR=Color.blue;
+	
+	/**
+	 * Constructs for ParkingPassCar
+	 */
 	
     public ParkingPassCar() {
     	Random random = new Random();

@@ -10,6 +10,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+/**
+ * Class for the Text overview
+ * @author Martijn Bakker, Albert van der Berg, Antonie Groenveld, Arneld van der Veen and Daniel Bouius
+ *
+ */
+
 public class TextOverview extends JPanel {
 	private JTextField txtRevenue;
 	private Simulator simulator;
@@ -18,16 +24,17 @@ public class TextOverview extends JPanel {
 	
 	
 	/**
-	 * Create the frame.
+	 * Create the frame
 	 */
+	
 	public TextOverview(Simulator simulator) {
 		this.simulator = simulator;
 		this.setLayout(new GridLayout(0,1)); 
 		//setBounds(100, 100, 450, 339);
 		
-		
-		
-		
+		/**
+		 * Create the panel
+		 */
 		
 		JPanel revenue = new JPanel();
 		revenue.setLayout(new FlowLayout());
@@ -51,6 +58,7 @@ public class TextOverview extends JPanel {
 	/**
 	 * updates the values inside the textFields
 	 */
+	
 	public void updateView(){
 		calcRevenue();
 
@@ -59,6 +67,7 @@ public class TextOverview extends JPanel {
 	/**
 	 * calculates the revenue
 	 */
+	
 	public void calcRevenue()
 	{
 	

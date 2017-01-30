@@ -1,6 +1,12 @@
 package Model;
+
 import java.util.Random;
 import java.awt.*;
+
+/*
+ * This is class SubscriberPassCar
+ * @author Daniël Bouius, Arneld van der Veen, Albert van der Berg, Antonie Groenveld, Martijn Bakker
+ */
 
 public class SubscriberPassCar extends Car {
 	private static final Color COLOR=Color.black;

@@ -1,8 +1,14 @@
 package View;
 
 import javax.swing.*;
+
 import Model.*;
-import Controller.*;
+
+/**
+ * Abstract class for the View subclasses
+ * @author Martijn Bakker, Albert van der Berg, Antonie Groenveld, Arneld van der Veen and Daniel Bouius
+ *
+ */
 
 public abstract class AbstractView extends JFrame {
 	protected Simulator simulator;
@@ -16,12 +22,15 @@ public abstract class AbstractView extends JFrame {
 		return simulator;
 	}
 	
+// 	Repaints the car park view
 	public void updateView() {
 		repaint();
 	}
-private void updateViews(){
-	simulator.tick();
-    // Update the car park view.
-    updateView();	
-}
+	
+// 	Update the car park view. Test for reset
+//	private void updateViews(){
+//	simulator.tick();
+// 	
+//   updateView();	
+//}
 }
