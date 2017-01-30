@@ -14,6 +14,7 @@ public class Simulator extends AbstractModel {
     private CarQueue paymentCarQueue;
     private CarQueue exitCarQueue;
     private SimulatorView simulatorView;
+	 private int PayingCars;
 private TextOverview textOverview;
 
 	private int day = 0;
