@@ -25,6 +25,7 @@ public class Simulator extends AbstractModel {
     private static int minute = 0;
 
     private static int tickPause = 100;
+    private static boolean run = true;
 
     static int weekDayArrivals= 100; // average number of arriving cars per hour
     static int weekendArrivals = 200; // average number of arriving cars per hour
@@ -46,9 +47,13 @@ public class Simulator extends AbstractModel {
         simulatorView = new SimulatorView(3, 6, 30, textOverview);
     }
     
+    public static void Stop(){
+    	run = false;
+    }
+    
     public static void runCommand(int getal) {
     	int i = getal;
-    	while(i > 0){
+    	while(i > 0 && run == true){
     		tick();
     		i--; }
     	}

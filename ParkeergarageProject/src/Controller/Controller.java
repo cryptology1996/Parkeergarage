@@ -2,6 +2,7 @@ package Controller;
 
 
 import Controller.AbstractController;
+import Main.Main;
 import Model.Simulator;
 
 import javax.swing.*;
@@ -9,6 +10,7 @@ import javax.swing.*;
 import java.awt.Color;
 
 import java.awt.event.*;
+import java.io.IOException;
 
 public class Controller extends AbstractController implements ActionListener {
 	private JButton een;
@@ -29,7 +31,7 @@ public Controller(Simulator simulator) {
         een.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
         add(een);
          
-        honderd= new JButton("Hunderd Step");
+        honderd= new JButton("Hundred Step");
         honderd.addActionListener((ActionListener) this);
         honderd.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
         add(honderd);
@@ -39,7 +41,7 @@ public Controller(Simulator simulator) {
         honderd.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
         add(start);
        
-        stop= new JButton("Stop");
+        stop= new JButton("Reset");
         stop.addActionListener((ActionListener) this);
         honderd.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
         add(stop);
@@ -81,31 +83,28 @@ public void actionPerformed(ActionEvent e)
 			if (command == "One Step"){
 				Simulator.runCommand(1);
 			} 
-			if (command == "Hunderd Step"){
+			if (command == "Hundred Step"){
 				Simulator.runCommand(100);
 				}
+			if (command == "Start"){
+				Simulator.runCommand(100000);
+			}
+			if (command == "Reset"){
+				try {
+					Runtime.getRuntime().exec("java -jar Parkeergarage.jar");
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			     System.exit(1);
+				
+			}
 
-	//public void run(){
-	//ActionEvent e = getActionEvent();
-	//String command = e.getActionCommand();
-	//	if (command == "+100"){
-	//		simulator.runCommand(100);
-	//	}
-	//	if (command == "+1"){
-	//		simulator.runCommand(1);
-	//	}
-	//	if (command == "Start"){
-	//		//controller.run();
-	//	}
-	//	if (command == "Stop"){
-	//		simulator.runCommand(0);
-	//	}
-	//}
-		
 		}
 		};
-	performerThread.start();
+		performerThread.start();
 }
+
 }
 
 
