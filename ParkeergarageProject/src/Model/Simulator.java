@@ -14,8 +14,9 @@ public class Simulator extends AbstractModel {
     private CarQueue paymentCarQueue;
     private CarQueue exitCarQueue;
     private SimulatorView simulatorView;
+private TextOverview textOverview;
 
-    private int day = 0;
+	private int day = 0;
     private int hour = 0;
     private int minute = 0;
 
@@ -35,7 +36,7 @@ public class Simulator extends AbstractModel {
         entrancePassQueue = new CarQueue();
         paymentCarQueue = new CarQueue();
         exitCarQueue = new CarQueue();
-        simulatorView = new SimulatorView(3, 6, 30);
+        simulatorView = new SimulatorView(3, 6, 30, textOverview);
     }
     public void tick() {
     	advanceTime();
@@ -124,12 +125,18 @@ public class Simulator extends AbstractModel {
 
     private void carsPaying(){
         // Let cars pay.
-    	int i=0;
-    	while (paymentCarQueue.carsInQueue()>0 && i < paymentSpeed){
+    		for (int i = 0; i < paymentSpeed; i++) {
             Car car = paymentCarQueue.removeCar();
-            // TODO Handle payment.
-            carLeavesSpot(car);
-            i++;
+            if (car != null){
+            	PayingCars++;
+            	
+            }
+            if (car == null) {
+                break;
+            }
+            simulatorView.removeCarAt(car.getLocation());
+            exitCarQueue.addCar(car);
+            textOverview.updateView();
     	}
     }
     
@@ -154,6 +161,13 @@ public class Simulator extends AbstractModel {
         double standardDeviation = averageNumberOfCarsPerHour * 0.3;
         double numberOfCarsPerHour = averageNumberOfCarsPerHour + random.nextGaussian() * standardDeviation;
         return (int)Math.round(numberOfCarsPerHour / 60);	
+    }
+	/*
+     * returns the amount of cars that will pay 
+     * @return PayingCars
+     */
+    public int getPayingCars() {
+    	return PayingCars;
     }
     
     private void addArrivingCars(int numberOfCars, String type){
