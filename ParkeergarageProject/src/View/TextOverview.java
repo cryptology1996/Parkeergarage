@@ -1,15 +1,14 @@
 package View;
-import Model.*;
+
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
-
-
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import Model.*;
 /**
  * Class for the Text overview
  * @author Martijn Bakker, Albert van der Berg, Antonie Groenveld, Arneld van der Veen and Daniel Bouius

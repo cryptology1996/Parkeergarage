@@ -1,9 +1,13 @@
 package Model;
-public class Location {
+
 /*
- * @author Arneld van der Veen, Albert van der Berg, Martijn Bakker, 
- * Daniel Bouius, Antonie Groenveld
+ * This is class Location
+ * @author Daniël Bouius, Arneld van der Veen, Albert van der Berg, Antonie Groenveld, Martijn Bakker
+ * 
  */
+
+public class Location {
+
     private int floor;
     private int row;
     private int place;

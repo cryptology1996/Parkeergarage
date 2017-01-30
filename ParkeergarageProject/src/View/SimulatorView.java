@@ -8,7 +8,6 @@ import Controller.*;
 /**
  * Class SimulatorView
  * This class creates the display for the view of the parking garage
- * 
  * @author Martijn Bakker, Albert van der Berg, Antonie Groenveld, Arneld van der Veen and Daniel Bouius
  */
 
