@@ -1,6 +1,8 @@
 package Model;
 
 import java.util.Random;
+
+import Controller.Controller;
 import View.*;
 
 public class Simulator extends AbstractModel {
@@ -16,6 +18,7 @@ public class Simulator extends AbstractModel {
     private SimulatorView simulatorView;
     private int PayingCars;
     private TextOverview textOverview;
+    private Controller controller;
 
     private int day = 0;
     private int hour = 0;
@@ -42,6 +45,14 @@ public class Simulator extends AbstractModel {
         //test
         simulatorView = new SimulatorView(3, 6, 30, textOverview);
     }
+    
+    public void runCommand(int getal) {
+    	int i = getal;
+    	while(i > 0){
+    		tick();
+    		i--; }
+    	}
+    
     public void tick() {
     	advanceTime();
     	handleExit();
