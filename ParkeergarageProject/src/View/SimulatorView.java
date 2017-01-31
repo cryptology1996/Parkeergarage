@@ -21,7 +21,7 @@ public class SimulatorView extends JFrame {
     private Controller controller;
     private Simulator simulator;
 	private TextOverview textOverview;
-	private CirkelDiagramView cirkelDiagramview;
+	private PieView pieView;
   
 	/**
 	 * Constructs for SimulatorView
@@ -30,7 +30,7 @@ public class SimulatorView extends JFrame {
      * @param numberOfPlaces
 	 */
 	
-    public SimulatorView(int numberOfFloors, int numberOfRows, int numberOfPlaces, TextOverview tOView, CirkelDiagramView ciView) {
+    public SimulatorView(int numberOfFloors, int numberOfRows, int numberOfPlaces, TextOverview tOView, PieView pieview) {
         this.numberOfFloors = numberOfFloors;
         this.numberOfRows = numberOfRows;
         this.numberOfPlaces = numberOfPlaces;
@@ -39,7 +39,7 @@ public class SimulatorView extends JFrame {
         controller= new Controller(simulator);
         carParkView = new CarParkView();
         textOverview = tOView;
-        cirkelDiagramview = ciView;
+        pieView = pieview; 
         
        // adds all the componets to contentPane
         Container contentPane = getContentPane();
@@ -47,7 +47,7 @@ public class SimulatorView extends JFrame {
         contentPane.add(carParkView);
         contentPane.add(controller);
         contentPane.add(tOView);
-        contentPane.add(ciView);
+        contentPane.add(pieview);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
         
@@ -67,6 +67,35 @@ public class SimulatorView extends JFrame {
         carParkView.updateView();
     }
     
+    public int getAdHocAmount(){
+    	int amount = carParkView.GetAdHoc();
+    	if (amount == 0) {
+    		return 0;
+    	}
+    	else {
+    	return amount;
+    	}
+    }
+    
+    public int getPassCarAmount(){
+    	int amount = carParkView.GetPassCar();
+    	if (amount == 0) {
+    		return 0;
+    	}
+    	else {
+    	return amount;
+    	}
+    	}
+    
+    public int getSubCar(){
+    	int amount = carParkView.GetSubCar();
+    	if (amount == 0) {
+    		return 0;
+    	}
+    	else {
+    	return amount;
+    	}
+    }
     /**
      * returns the number of floors in the parking garage
      * @return numberOfFloors
@@ -233,7 +262,10 @@ public class SimulatorView extends JFrame {
     private class CarParkView extends JPanel {
         
         private Dimension size;
-        private Image carParkImage;    
+        private Image carParkImage;  
+        private int adHocCar;
+        private int PassCar;
+        private int ReservedCar;
     
         /*
         * Constructor for objects of class CarPark
@@ -283,12 +315,31 @@ public class SimulatorView extends JFrame {
                     for(int place = 0; place < getNumberOfPlaces(); place++) {
                         Location location = new Location(floor, row, place);
                         Car car = getCarAt(location);
+                        if (car == null) {
                         Color color = car == null ? Color.white : car.getColor();
-                        drawPlace(graphics, location, color);
+                        drawPlace(graphics, location, color);   
+                        }
+                        else if (car != null && car.getColor() == Color.red){
+                        Color color = Color.red;
+                       drawPlace(graphics, location, color); 
+                       adHocCar++;
+                        }
+                       else if (car != null && car.getColor() == Color.blue){
+                       Color color = Color.blue;
+                       drawPlace(graphics, location, color); 
+                       PassCar++;
                     }
+                       else if (car != null && car.getColor() == Color.black){
+                       Color color = Color.black;
+                       drawPlace(graphics, location, color); 
+                       ReservedCar++;
                 }
             }
+                };
+            }
             repaint();
+            
+            
         }
     
         /**
@@ -302,6 +353,16 @@ public class SimulatorView extends JFrame {
                     60 + location.getPlace() * 10,
                     20 - 1,
                     10 - 1); // TODO use dynamic size or constants
+        }
+        public int GetAdHoc(){
+        	return adHocCar;
+        }
+        
+        public int GetPassCar(){
+        	return PassCar;
+        }
+        public int GetSubCar(){
+        	return ReservedCar;
         }
     }
 

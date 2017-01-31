@@ -25,7 +25,7 @@ public class Simulator extends AbstractModel {
     private static int PayingCars;
     private static TextOverview textOverview;
     private Controller controller;
-    private CirkelDiagramView cirkelDiagramview;
+    private PieView pieview;
     private static int day = 0;
     private static int hour = 0;
     private static int minute = 0;
@@ -54,8 +54,9 @@ public class Simulator extends AbstractModel {
         paymentCarQueue = new CarQueue();
         exitCarQueue = new CarQueue();
         textOverview = new TextOverview(this);
+        pieview = new PieView(this);
         //test
-        simulatorView = new SimulatorView(3, 6, 30, textOverview, cirkelDiagramview);
+        simulatorView = new SimulatorView(3, 6, 30, textOverview, pieview);
     }
     
     public static void Stop(){
@@ -210,6 +211,36 @@ public class Simulator extends AbstractModel {
      */
     public int getPayingCars() {
     	return PayingCars;
+    }
+    
+    public int getAdHoc(){
+    	int amount = simulatorView.getAdHocAmount();
+    	if (amount == 0){
+    		return 0;
+    	}
+    	else{
+    	return amount;
+    	}
+    }
+    
+    public int getPassCar(){
+    	int amount = simulatorView.getPassCarAmount();
+    	if (amount == 0){
+    		return 0;
+    	}
+    	else{
+    	return amount;
+    	}
+    }
+    
+    public int getSubCar(){
+    	int amount = simulatorView.getSubCar();
+    	if (amount == 0){
+    		return 0;
+    	}
+    	else{
+    	return amount;
+    	}
     }
     
     private static void addArrivingCars(int numberOfCars, String type){
