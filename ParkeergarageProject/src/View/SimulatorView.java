@@ -301,11 +301,7 @@ public class SimulatorView extends JFrame {
             }
         }
     
-        public void updateView() {
-        	adHocCar = 0;
-        	PassCar = 0;
-        	ReservedCar = 0;
-        	
+        public void updateView() {        	
             // Create a new car park image if the size has changed.
             if (!size.equals(getSize())) {
                 size = getSize();
