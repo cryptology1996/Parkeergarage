@@ -26,9 +26,6 @@ public class PieView extends JPanel {
 		pieView.add(lblPieView);
 		this.add(pieView);
 		
-		aantalAdHoc = simulator.getAdHoc()-1;
-		aantalPassCar = simulator.getPassCar()-1;
-		aantalReserved = simulator.getSubCar()-1;
 	}
 	
 	public void updateView(){
