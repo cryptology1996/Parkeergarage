@@ -3,6 +3,7 @@ package View;
 import java.awt.*;
 
 import javax.swing.BorderFactory;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -25,16 +26,16 @@ public class PieView extends JPanel {
 		pieView.add(lblPieView);
 		this.add(pieView);
 		
-		aantalAdHoc = simulator.getAdHoc();
-		aantalPassCar = simulator.getPassCar();
-		aantalReserved = simulator.getSubCar();
+		aantalAdHoc = simulator.getAdHoc()-1;
+		aantalPassCar = simulator.getPassCar()-1;
+		aantalReserved = simulator.getSubCar()-1;
 	}
 	
 	public void updateView(){
 		repaint();
 	}
-
-	public void paintComponent(Graphics g) {
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
 		g.setColor(Color.WHITE);
 		g.fillRect(0, 0, 200, 200);
 		g.setColor(Color.red);

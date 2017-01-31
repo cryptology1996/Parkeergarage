@@ -178,12 +178,10 @@ public class Simulator extends AbstractModel {
             simulatorView.removeCarAt(car.getLocation());
             exitCarQueue.addCar(car);
             textOverview.updateView();
-            pieview.updateView();
     	
     	}
     }
-    
-    private static void carsLeaving(){
+        private static void carsLeaving(){
         // Let cars leave.
     	int i=0;
     	while (exitCarQueue.carsInQueue()>0 && i < exitSpeed){

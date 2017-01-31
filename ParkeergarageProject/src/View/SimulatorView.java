@@ -68,34 +68,21 @@ public class SimulatorView extends JFrame {
     }
     
     public int getAdHocAmount(){
+    	System.out.println(carParkView.GetAdHoc());
     	int amount = carParkView.GetAdHoc();
-    	if (amount == 0) {
-    		return 0;
-    	}
-    	else {
     	return amount;
-    	}
     }
     
     public int getPassCarAmount(){
     	int amount = carParkView.GetPassCar();
-    	if (amount == 0) {
-    		return 0;
-    	}
-    	else {
-    	return amount;
-    	}
+       	return amount;
     	}
     
     public int getSubCar(){
     	int amount = carParkView.GetSubCar();
-    	if (amount == 0) {
-    		return 0;
-    	}
-    	else {
     	return amount;
     	}
-    }
+    
     /**
      * returns the number of floors in the parking garage
      * @return numberOfFloors
@@ -263,9 +250,9 @@ public class SimulatorView extends JFrame {
         
         private Dimension size;
         private Image carParkImage;  
-        private int adHocCar = 1;
-        private int PassCar = 1;
-        private int ReservedCar = 1;
+        private int adHocCar = 0;
+        private int PassCar = 0;
+        private int ReservedCar= 0;
     
         /*
         * Constructor for objects of class CarPark
@@ -273,6 +260,17 @@ public class SimulatorView extends JFrame {
         
         public CarParkView() {
             size = new Dimension(0, 0);
+        }
+        
+        public int GetAdHoc(){
+        	return adHocCar;
+        }
+        
+        public int GetPassCar(){
+        	return PassCar;
+        }
+        public int GetSubCar(){
+        	return ReservedCar;
         }
     
         /**
@@ -304,6 +302,10 @@ public class SimulatorView extends JFrame {
         }
     
         public void updateView() {
+        	adHocCar = 0;
+        	PassCar = 0;
+        	ReservedCar = 0;
+        	
             // Create a new car park image if the size has changed.
             if (!size.equals(getSize())) {
                 size = getSize();
@@ -316,22 +318,22 @@ public class SimulatorView extends JFrame {
                         Location location = new Location(floor, row, place);
                         Car car = getCarAt(location);
                         if (car == null) {
-                        Color color = car == null ? Color.white : car.getColor();
+                        Color color = Color.white;
                         drawPlace(graphics, location, color);   
                         }
-                        else if (car != null && car.getColor() == Color.red){
-                        Color color = Color.red;
-                       drawPlace(graphics, location, color); 
+                        else if (car != null && car.getClass().equals(AdHocCar.class)){
+                        Color color2 = Color.red;
+                       drawPlace(graphics, location, color2); 
                        adHocCar++;
                         }
-                       else if (car != null && car.getColor() == Color.blue){
-                       Color color = Color.blue;
-                       drawPlace(graphics, location, color); 
+                       else if (car != null && car.getClass().equals(ParkingPassCar.class)){
+                       Color color3 = Color.blue;
+                       drawPlace(graphics, location, color3); 
                        PassCar++;
                     }
-                       else if (car != null && car.getColor() == Color.black){
-                       Color color = Color.black;
-                       drawPlace(graphics, location, color); 
+                       else if (car != null && car.getClass().equals(SubscriberPassCar.class)){
+                       Color color4 = Color.black;
+                       drawPlace(graphics, location, color4); 
                        ReservedCar++;
                 }
             }
@@ -354,17 +356,7 @@ public class SimulatorView extends JFrame {
                     20 - 1,
                     10 - 1); // TODO use dynamic size or constants
         }
-        public int GetAdHoc(){
-        	return adHocCar;
-        	
-        }
-        
-        public int GetPassCar(){
-        	return PassCar;
-        }
-        public int GetSubCar(){
-        	return ReservedCar;
-        }
+
     }
 
 }
