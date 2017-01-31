@@ -21,6 +21,7 @@ public class SimulatorView extends JFrame {
     private Controller controller;
     private Simulator simulator;
 	private TextOverview textOverview;
+	private CirkelDiagramView cirkelDiagramview;
   
 	/**
 	 * Constructs for SimulatorView
@@ -29,7 +30,7 @@ public class SimulatorView extends JFrame {
      * @param numberOfPlaces
 	 */
 	
-    public SimulatorView(int numberOfFloors, int numberOfRows, int numberOfPlaces, TextOverview tOView) {
+    public SimulatorView(int numberOfFloors, int numberOfRows, int numberOfPlaces, TextOverview tOView, CirkelDiagramView ciView) {
         this.numberOfFloors = numberOfFloors;
         this.numberOfRows = numberOfRows;
         this.numberOfPlaces = numberOfPlaces;
@@ -38,6 +39,7 @@ public class SimulatorView extends JFrame {
         controller= new Controller(simulator);
         carParkView = new CarParkView();
         textOverview = tOView;
+        cirkelDiagramview = ciView;
         
        // adds all the componets to contentPane
         Container contentPane = getContentPane();
@@ -45,6 +47,7 @@ public class SimulatorView extends JFrame {
         contentPane.add(carParkView);
         contentPane.add(controller);
         contentPane.add(tOView);
+        contentPane.add(ciView);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
         
@@ -55,7 +58,8 @@ public class SimulatorView extends JFrame {
         updateView();
     }
 
-    /**
+
+	/**
      * Calls the updateview method inside carParkView
      */
     

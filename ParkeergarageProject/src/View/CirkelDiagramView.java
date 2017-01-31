@@ -8,17 +8,29 @@ import Model.Simulator;
 
 
 public class CirkelDiagramView extends AbstractView{
-	double value;
-	   Color color;
+		protected MyComponent mycomponent;
+		double value;
+		Color color;
 	   
 	   public CirkelDiagramView(double value, Color color) {  
 	      super(simulator);
 		  this.value = value;
 	      this.color = color;
-	      JFrame frame = new JFrame();
-	      frame.getContentPane().add(new MyComponent());
-	      frame.setSize(300, 200);
-	      frame.setVisible(true);
+	      
+	      
+	      // JPanel cirkel = new JPanel(new BorderLayout());
+	      // cirkel.setBorder(someBorder);
+	      //  cirkel.add(MyComponent, BorderLayout.CENTER);
+	      //  topLevelContainer.cirkel(contentPane);
+	      //JFrame test = new JFrame();
+	      //test.getContentPane().add(new MyComponent());
+	      //test.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+	      // test.
+	      setSize(200, 200);
+	      //test.setResizable(false);
+	      // test.setLayout(null);
+	      // test.setBounds(230, 10, 200, 200);
+	      // test.setVisible(true);
 	   }
 	}
 	class MyComponent extends JComponent {

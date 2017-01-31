@@ -25,7 +25,7 @@ public class Simulator extends AbstractModel {
     private static int PayingCars;
     private static TextOverview textOverview;
     private Controller controller;
-
+    private CirkelDiagramView cirkelDiagramview;
     private static int day = 0;
     private static int hour = 0;
     private static int minute = 0;
@@ -55,7 +55,7 @@ public class Simulator extends AbstractModel {
         exitCarQueue = new CarQueue();
         textOverview = new TextOverview(this);
         //test
-        simulatorView = new SimulatorView(3, 6, 30, textOverview);
+        simulatorView = new SimulatorView(3, 6, 30, textOverview, cirkelDiagramview);
     }
     
     public static void Stop(){
