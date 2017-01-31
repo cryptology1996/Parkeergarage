@@ -263,9 +263,9 @@ public class SimulatorView extends JFrame {
         
         private Dimension size;
         private Image carParkImage;  
-        private int adHocCar;
-        private int PassCar;
-        private int ReservedCar;
+        private int adHocCar = 1;
+        private int PassCar = 1;
+        private int ReservedCar = 1;
     
         /*
         * Constructor for objects of class CarPark
@@ -356,6 +356,7 @@ public class SimulatorView extends JFrame {
         }
         public int GetAdHoc(){
         	return adHocCar;
+        	
         }
         
         public int GetPassCar(){

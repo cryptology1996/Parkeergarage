@@ -30,6 +30,9 @@ public class PieView extends JPanel {
 		aantalReserved = simulator.getSubCar();
 	}
 	
+	public void updateView(){
+		repaint();
+	}
 
 	public void paintComponent(Graphics g) {
 		g.setColor(Color.WHITE);
@@ -40,6 +43,5 @@ public class PieView extends JPanel {
 		g.fillArc(10, 10, 180, 180, aantalAdHoc, aantalPassCar);
 		g.setColor(Color.black);
 		g.fillArc(10, 10, 180, 180, aantalAdHoc+aantalPassCar, aantalReserved);
-		
 	}	
 }
