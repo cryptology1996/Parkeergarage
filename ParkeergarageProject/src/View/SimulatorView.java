@@ -65,6 +65,7 @@ public class SimulatorView extends JFrame {
     
     public void updateView() {
         carParkView.updateView();
+        pieView.updateView();
     }
     
     public int getAdHocAmount(){
@@ -253,7 +254,7 @@ public class SimulatorView extends JFrame {
         private int adHocCar = 0;
         private int PassCar = 0;
         private int ReservedCar= 0;
-    
+        
         /*
         * Constructor for objects of class CarPark
         */
@@ -336,7 +337,7 @@ public class SimulatorView extends JFrame {
                 };
             }
             repaint();
-            
+            pieView.repaint();
             
         }
     

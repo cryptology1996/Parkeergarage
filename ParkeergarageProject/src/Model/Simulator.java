@@ -212,38 +212,47 @@ public class Simulator extends AbstractModel {
     }
     
     public int getAdHoc(){
-    	int amount = 0;
-    	if (amount == 0){
-    		amount++;
-    		return amount;
+    	try 
+    	{
+    		int amount= simulatorView.getAdHocAmount();
+    		if( amount == 0)
+    			return 1;
+    		else
+    			return amount;
     	}
-    	else{
-    	int amountnotzero = simulatorView.getAdHocAmount() -1;
-    	return amountnotzero;
+    	catch(Exception E)
+    	{
+    		return 1;
     	}
     }
     
     public int getPassCar(){
-    	int amount = 0;
-    	if (amount == 0){
-    		amount++;
-    		return amount;
+     	try 
+    	{
+     		int amount= simulatorView.getPassCarAmount();
+    		if( amount == 0)
+    			return 1;
+    		else
+    			return amount;
     	}
-    	else{
-    	int amountnotzero = simulatorView.getPassCarAmount() -1;
-    	return amountnotzero;
+    	catch(Exception E)
+    	{
+    		return 1;
     	}
     }
     
     public int getSubCar(){
-    	int amount = 0;
-    	if (amount == 0){
-    		amount++;
-    		return amount;
+     	try 
+    	{
+     		int amount= simulatorView.getSubCar();
+    		if( amount == 0)
+    			return 1;
+    		else
+    			return amount;
     	}
-    	else{
-    	int amountnotzero = simulatorView.getSubCar() -1;
-    	return amountnotzero;
+    	catch(Exception E)
+    	{
+    		return 1;
     	}
     }
     
